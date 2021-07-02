@@ -1,0 +1,5 @@
+# resize vsplit
+:vertical resize <size>
+
+# remove white space
+:s/^\s\+//g

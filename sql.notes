@@ -1,0 +1,69 @@
+-- DATE CONVERSIONS
+unix time
+-- converting YYYYMM to yyyy-MM
+-- presto
+format_datetime(cast(parse_datetime(a.p_yearmonth, 'yyyyMM') as date), 'Y-MM') AS yearmonth
+
+-- pyspark
+date_format(to_date(cast(unix_timestamp(a.p_yearmonth, 'yyyyMM') AS timestamp)), 'Y-MM') AS yearmonth
+
+
+--
+--presto
+CASE WHEN EXTRACT(WEEK FROM DATE(replace(date_name,'/','-'))) = EXTRACT(WEEK FROM DATE_ADD('day',-1,DATE_TRUNC('week',CURRENT_DATE))) THEN 1 ELSE 0 END AS current_week_flg,
+
+--pyspark
+CASE WHEN DATE_TRUNC('week',DATE(REPLACE(date_name,'/','-'))) = DATE_TRUNC('week',date_sub(CURRENT_DATE,1)) THEN 1 ELSE 0 END AS current_week_flg
+
+
+
+-- convert datekey to dd-MMM-YY
+-- athena/presto
+DATE_FORMAT(CAST(parse_datetime(CAST(a.post_end_datekey AS varchar), 'yyyyMMdd') AS date), '%d-%b-%y')
+
+-- pyspark
+date_format(to_date(cast(unix_timestamp(cast(a.post_end_datekey as string), 'yyyyMMdd') as timestamp)), 'dd-MMM-YY')
+
+
+-- pyspark
+CAST(date_format(CURRENT_TIMESTAMP,'yyyyMMdd') AS INTEGER)
+--presto
+CAST(format_datetime(CURRENT_TIMESTAMP,'yyyyMMdd') AS INTEGER)
+
+
+
+
+
+-- date functions
+https://prestosql.io/docs/current/functions/datetime.html
+-- date_add()
+format_datetime(date_add('month', -11, cast(parse_datetime(p_yearmonth, 'yyyyMM') as date)), 'yyyy-MM')
+
+
+-- PARITITON BY
+-- https://www.youtube.com/watch?v=6trOvsL80Oo
+FUNTION TO APPLY OVER PARTITION (ie, count, row_number(),    OVER( PARTITION BY ...)
+
+"I only want the function (ie. COUNT(), ROW_NUMBER()) applied to each partition"
+
+
+-- ROLLING TOTAL
+-- https://www.youtube.com/watch?v=qA9Atd1IeJU
+sum(count(distinct a.board_id)) over (order by a.p_yearmonth rows between 11 preceding and current row) as Boards_Used_12mo, -- boards used rolling 12m
+
+
+-- window functions
+a window function is an aggregation of a group of data returned and presented in its own cell/column
+https://www.sqltutorial.org/sql-window-functions/
+
+-- presto window functions
+https://prestosql.io/docs/current/functions/window.html
+
+-- window function examples with gif
+https://dataschool.com/how-to-teach-people-sql/how-window-functions-work/
+
+
+
+-- why join d_company twice?
+for attributes use most recent one, for company_active historical counts you need dw_company_key join one
+

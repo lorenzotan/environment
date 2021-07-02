@@ -1,0 +1,2 @@
+# validate json
+cat [json file] | jq .

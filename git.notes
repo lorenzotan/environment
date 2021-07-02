@@ -1,0 +1,176 @@
++------------------------------------------------------------------------------+
+| GIT Commands to Remember
++------------------------------------------------------------------------------+
++----------+
+| GIT INIT |
++----------+
+
+# local filebased share SERVERSIDE / NETWORK SHARE
+$GIT_DIR/ $ git init --bare --shared [project].git
+
+# ON CLIENT SIDE
+git clone file:///$GIT_DIR/[project].git
+
+
+// start a git repo
+$ git init
+
+// or checkout a repo
+$ git clone [path]
+
+
+git add -p                  # choose what you want to add for your commit
+git reset <file>            # undo git add
+git reset --hard <SHA>      # undo all changes
+
+[from parent branch]
+git push --set-upstream origin [branch]    # pushes branch to origin (ie. BitBucket)
+                                           # create Pull request in BitBucket and cc team
+                                           # *** be sure destination is staging ***
+
+git remote add origin [URL]                # push existing repo 
+git push -u origin master                  # https://scotch.io/tutorials/how-to-push-an-existing-project-to-github, https://scotch.io/bar-talk/git-cheat-sheet
+
+git rm --cached <FILE>                     # stop tracking <FILE>
+
+
++---------------+
+| GIT Branching |
++---------------+
+git branch -d [branch]                      # delete local [branch] (-D to force delete)
+git push origin :[branch]                   # delete remote [branch]
+git remote update origin --prune            # update remote branch list
+
+git branch -m [old branch] [new branch]     # rename local old branch to new branch
+
+git branch --merged [parent branch]         # lists branches merged in to parent branch
+git branch --no-merged [parent branch]      # lists branches that have not been merged
+git branch --merged                         # lists branches merged into HEAD
+git branch [branch name] -u [remote branch] # change tracking branch
+
+
++--------------+
+| GIT Stashing |
++--------------+
+git stash                  # stash changes (allows you to switch branches)
+git stash save [name]      # stash changes with assigned [name]
+git stash list             # look at stored stashes
+git stash apply stash@{n}  # apply last stash or older if providing a name (stashed changes stay in queue)
+git stash pop stash@{n}    # pop out [name] from list and apply (stashed changes are removed)
+git stash clear            # remove all stashes
+
+
++-------------+
+| GIT Merging |
++-------------+
+Master
++ Staging
+  + lorenzo
+
+# to get changes/updates from Staging into "lorenzo" branch
+git checkout lorenzo
+git merge staging
+
+# merging 1 file
+[run the follow from target branch]
+git checkout [source branch] <path of file to checkout>
+
+# merging 1 commit
+git cherry-pick
+
+# Check if branch is merged to master
+git branch --merged master
+
+# Check if branches are not merged to master
+git branch --no-merged master
+
++------------+
+| GIT Rebase |
++------------+
+# this is a CLEANER way of merging when your feature branch is out of sync from the parent branch
+# GOLDEN RULE OF REBASING: NEVER USE IT ON PUBLIC BRANCHES
+
++-----------+
+| GIT Reset |
++-----------+
+git reset --hard        # resets index and working tree. all changes are discarded
+git reset --hard [sha]  # resets index and working tree back to [sha]
+git reset --mixed       # resets index but not working tree. changed files are preserved but not marked for commit (default)
+git reset --soft        # does not reset index or working tree. files marked for commit.
+
+
++---------------------+
+| GIT Undo Merge Pull |
++---------------------+
+git reset --hard HEAD~
+
+
++-----------------+
+| GIT Undo Commit |
++-----------------+
+git commit -m "MESSAGE"
+git reset --soft HEAD~
+<<edit>>
+git add
+git commit -c ORIG_HEAD
+
+# Change last commit message 
+git commit --amend -m "new commit message"
+
++----------------------------+
+| GIT Checkout Remote Branch |
++----------------------------+
+git fetch origin
+git checkout -b <remote branch> origin/<remote branch> or git checkout -t -b origin/<remote_branch>
+git pull origin <remote branch>
+git pull --rebase origin <remote branch>
+
+
++----------------------------+
+| GIT Error Messages
++----------------------------+
+lorenzo@[bdas-584_ekg_targets_design]:~/git/reporting-bdas/lib/Reporting/Screen$ git push origin :bdas-647_candidate_name 
+error: unable to delete 'bdas-647_candidate_name': remote ref does not exist
+error: failed to push some refs to 'git@bitbucket.org:broadbean/reporting-bdas.git'
+
+
+renzo@[bdas-584_ekg_targets_design]:~/git/reporting-bdas/lib/Reporting/Screen$ git fetch -p origin
+From bitbucket.org:broadbean/reporting-bdas
+ x [deleted]         (none)     -> origin/BDAS-575-functionality-changes
+ x [deleted]         (none)     -> origin/bdas-637_hires_mismatch
+ x [deleted]         (none)     -> origin/bdas-647_candidate_name
+
++------------------------------------------------------------------------------+
+| TYPICAL GIT Usage
++------------------------------------------------------------------------------+
+git clone https://thereallorenzotan@bitbucket.org/broadbean/reporting-bdas.git
+git fetch
+git checkout staging
+git pull
+git checkout -b [private branch]
+OR
+git checkout --track -b [private branch] [parent branch]
+
+[make changes]
+git add
+git commit
+git push origin [private branch]
+# create pull request on BitBucket
+git checkout staging
+git merge [private branch]
+git push origin staging
+
+
+
++------------------------+
+| GIT Check Size of Repo |
++------------------------+
+git count-objects -vH
+
+
+
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch <path_to_file>' <commit-sha-start>..<commit-sha-end>
+
+
+
+git log --graph --abbrev-commit --decorate --oneline --all
