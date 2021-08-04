@@ -1,0 +1,12 @@
+# https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
+1. install virtualenv
+$ pip install virtualenv
+
+2. create virtual environment
+$ virtualenv [env_name]
+
+3. activate the virtual environment
+$ source [env_name]/bin/activate
+
+4. deactivate the environment
+$ deactivate

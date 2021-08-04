@@ -1,0 +1,11 @@
+# install
+$ pip install [package name]
+
+# list
+$ pip list --all
+
+# install requirements file
+$ pip install -r requirements.pip
+
+# export to requirements
+$ pip list > requirements.pip

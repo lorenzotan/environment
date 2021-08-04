@@ -1,0 +1,61 @@
+# Images: bundled software
+# Containers: runs the bundled software
+
+# build docker image
+docker build -t [tag name] [folder with Dockerfile]
+
+# remove stale docker images
+docker system prune -a
+
+# run docker image
+#   - this will create a new container every time you run it
+#   - it will exit once 
+docker run [image]
+
+
+# will list all running containers
+docker ps 
+
+# will list all containers and their status
+docker ps --all
+
+# run docker compose file
+# cd to docker-compose.yml file
+docker-compose up
+
+# shell into container
+[winpty] docker exec -it [container tag name] bash
+
+
+docker logs [container_id]
+
++-------------------------------------------------------------------------------
+| Overview
++-------------------------------------------------------------------------------
+
+build docker image 
+  - the image will package up the software needed to run your application
+
+run docker image
+  - this wil run the image that you had created
+
+
+Questions:
+
+Q. When you run a dockerfile that runs a command (aka "Task Container"), it exits upon completion.
+   What happens when you run a dockerfile that builds a web server ("Interactive/Background Containers")?
+
+A (partial). When the process ends, the container exits.
+
+
+
+Q. Can you have multiple CMD in Dockerfile?
+A. NO. There can be only 1. 
+   When running `docker run -it ("interactive mode") [image] [NEW CMD]` the NEW CMD will override the CMD in Dockerfile
+
+
+When running several docker containers, if you run out of memory and cpu, 
+you can join several servers running docker into a "swarm".
+
+Q. what is a swarm?
+A. 
