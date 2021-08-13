@@ -1,5 +1,7 @@
+# NOTE: if default python is 2, create alias to point to python3 after brew install python3
+
 # install
-$ pip install [package name]
+$ python -m pip install [package name]
 
 # list
 $ pip list --all

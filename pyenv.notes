@@ -1,2 +1,34 @@
+# https://realpython.com/intro-to-pyenv/
+# https://opensource.com/article/19/5/python-3-default-mac
+
 # install
 $ curl https://pyenv.run | bash
+
+# updates list of python versions that you can install
+$ pyenv update
+
+# will need to install additional SDK headers if running Mojave+
+$ sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+
+# list python versions
+$ pyenv install --list | grep " 3\.[678]"
+
+# install the python version you want
+$ pyenv install [version]
+
+# list python versions installed
+$ pyenv versions
+
+# set system default python version
+pyenv global [version]
+
+# creating virtual environments
+pyenv virtualenv <python_version> <env_name>
+
+# activate virtual environment
+pyenv local <env_name>
+
+# manually activate
+pyenv activate <env_name>
+# manually deactivate
+pyenv deactivate

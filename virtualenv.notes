@@ -4,6 +4,8 @@ $ pip install virtualenv
 
 2. create virtual environment
 $ virtualenv [env_name]
+OR (if installed with pip)
+$ python -m virtualenv [env_name]
 
 3. activate the virtual environment
 $ source [env_name]/bin/activate
