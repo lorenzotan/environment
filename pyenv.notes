@@ -1,5 +1,11 @@
+# Resources
+# https://github.com/pyenv/pyenv-virtualenv
 # https://realpython.com/intro-to-pyenv/
 # https://opensource.com/article/19/5/python-3-default-mac
+# https://akrabat.com/creating-virtual-environments-with-pyenv/
+
+# install and build dependencies
+$ brew install openssl readline sqlite3 xz zlib
 
 # install
 $ curl https://pyenv.run | bash
@@ -7,7 +13,7 @@ $ curl https://pyenv.run | bash
 # updates list of python versions that you can install
 $ pyenv update
 
-# will need to install additional SDK headers if running Mojave+
+# will need to install additional SDK headers if running Mojave+ (not for macOS11+)
 $ sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 
 # list python versions
@@ -15,6 +21,12 @@ $ pyenv install --list | grep " 3\.[678]"
 
 # install the python version you want
 $ pyenv install [version]
+
+# uninstall the python version you want
+$ pyenv uninstall [version]
+
+# NOTE you will need to include the shims/ folder in your path
+$PATH=$HOME/.pyenv/shims:$PATH
 
 # list python versions installed
 $ pyenv versions

@@ -1,0 +1,4 @@
+# Helpful BASH commands
+
+# find duplicates between 2 files
+$ comm -12 <(sort file1.txt) <(sort file2.txt)
