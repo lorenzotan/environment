@@ -1,0 +1,26 @@
+# PANES
+ctrl+b %    # new pane vertical split
+ctrl+b "    # new pane hotizontal split
+
+ctrl+b <-   # move to left pane
+ctrl+b ->   # move to right pane
+
+
+# WINDOWS
+ctrl+b c    # create new window
+
+ctrl+b 0    # move to window 0
+
+
+
+# SESSIONS
+ctrl+b d    # detach session
+
+# list tmux sessions
+tmux ls
+
+# reattach to session
+tmux attach -t [session_id]
+
+
+# tmux new -s [session_name]

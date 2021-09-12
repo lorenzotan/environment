@@ -1,0 +1,5 @@
+# list all packages installed by apt-get
+apt list --installed
+
+# search for apt packages
+apt-cache search [keyword]

@@ -1,0 +1,73 @@
+# HELM
+
+# 3 big concepts
+1. Chart        - a Helm package containing all the resource definitions needed to run your program inside a Kube cluster
+2. Repository   - where charts are collected and shared
+3. Release      - a chart instance inside a Kube cluster
+
+Helm installs charts into Kubernetes,
+creating a new release for each installation.
+And to find new charts, you can search Helm chart repositories.
+
+# create a helm chart (creates tree)
+helm create [app]
+
+
+# helm templates are stored in templates/ folder
+
+# values for templates are stored in values.yaml under [app]/
+
+
+# installing a helm chart
+helm install [release] ./[app]          # from remote chart directory
+helm install [release] [repo]/[app]     # from remote chart repo
+
+
+#-------------------------------------------------------------------------------
+# Using custom values
+#-------------------------------------------------------------------------------
+# using values file
+helm install [release] ./[app] -f [values.yaml file]
+
+# using individual key-value pair
+helm install [release] ./[app] --set [.Values.key]=[.Values.value] (ie. image.tag=master)
+
+# advanced usage
+helm install [release] ./[app] \
+  -f staging.yaml \
+  -f us-east-1.yaml \
+  --set tracing.enabled=true
+
+
+
+# check release status
+helm status [release]
+
+
+# what's running (similar to docker ps)
+helm list
+
+
+# upgrading release
+helm upgrade myrelease ./[app] --set image.tag=1.16.1-alpine
+
+
+# rollback
+helm rollback myrelease 1
+
+
+# remove a release
+helm delete myrelease
+
+
+
+
+# MANIFEST
+# returns the k8s resources (configs) that were uploaded to the cluster 
+# with their populated values
+helm get manifest [RELEASE]
+
+
+
+# TO TEST THE TEMPLATE RENDERING
+helm install --debug --dry-run [RELEASE] [FOLDER]

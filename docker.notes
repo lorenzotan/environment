@@ -12,6 +12,15 @@ docker system prune -a
 #   - it will exit once 
 docker run [image]
 
+# Run docker image and log into it
+docker run -it [image] bash
+# Run docker image as daemon (-d) and set port (-p)
+docker run -d -p [ext-port]:[int-port] [image]
+# for a remote image
+docker run -it --name [registry] [img]:[version] bash
+
+# kill docker container
+docker kill [container_id]
 
 # will list all running containers
 docker ps 
@@ -26,6 +35,11 @@ docker-compose up
 # shell into container
 [winpty] docker exec -it [container tag name] bash
 
+# pull docker image from ACR
+# https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli
+az login
+az acr login --name [registry] (ie. trstaps1trcmcr1)
+docker pull [image name] (ie. trstaps1trcmcr1.azurecr.io/firstam/data-analysis/ubuntu-ruby:2.5)
 
 docker logs [container_id]
 

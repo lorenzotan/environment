@@ -58,6 +58,7 @@ git stash list             # look at stored stashes
 git stash apply stash@{n}  # apply last stash or older if providing a name (stashed changes stay in queue)
 git stash pop stash@{n}    # pop out [name] from list and apply (stashed changes are removed)
 git stash clear            # remove all stashes
+git stash drop stash@{n}   # remove specific stash
 
 
 +-------------+
@@ -108,6 +109,7 @@ git reset --hard HEAD~
 +-----------------+
 | GIT Undo Commit |
 +-----------------+
+# https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git
 git commit -m "MESSAGE"
 git reset --soft HEAD~
 <<edit>>
@@ -116,6 +118,10 @@ git commit -c ORIG_HEAD
 
 # Change last commit message 
 git commit --amend -m "new commit message"
+
+# checkout previous version of file
+# https://stackoverflow.com/questions/215718/how-can-i-reset-or-revert-a-file-to-a-specific-revision
+git checkout [sha]~1 -- [file]
 
 +----------------------------+
 | GIT Checkout Remote Branch |

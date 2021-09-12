@@ -1,0 +1,51 @@
+# Kubernetes
+
+# helpful links
+https://stackoverflow.com/questions/40686151/kubernetes-pod-gets-recreated-when-deleted
+
+# check version and check kubectl is configured to talk to cluster
+kubectl version
+
+
+# view nodes in cluster
+kubectl get nodes
+
+
+# deploy app ???
+kubectl create deployment 
+
+
+# list deployments
+kubectl get deployments --all-namespaces
+
+kubectl delete -n [namespace] deployment [name of deployment]
+
+
+# in deployment.yaml
+selector will point to the pod (container) that you want to look at when you deploy
+
+
+
+# need 
+  - Dockerfile
+  - deployment.yml
+
+# create a new resource (service & deployment)
+kubectl create -f deployment.yml
+
+# apply existing resource
+kubectl apply -f deployment.yml
+
+
+
+# start up a kube cluster
+minikube start
+
+
+# remove pods
+kubectl delete pod [pod name]
+
+
+# check ports
+k get svc
+k delete svc [name]
