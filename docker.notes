@@ -73,3 +73,8 @@ you can join several servers running docker into a "swarm".
 
 Q. what is a swarm?
 A. 
+
+
+
+NOTES:
+EXPOSE keyword sets CONTAINER port exposure

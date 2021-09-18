@@ -18,6 +18,11 @@ kubectl create deployment
 # list deployments
 kubectl get deployments --all-namespaces
 
+# view yaml
+kubectl get deploy [name of deployment] -o yaml
+kubectl get pod [name of pod] -o yaml
+
+# delete deployment within a namespace
 kubectl delete -n [namespace] deployment [name of deployment]
 
 
