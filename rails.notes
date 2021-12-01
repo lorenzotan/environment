@@ -1,3 +1,39 @@
 bundle exec rake [task]
 
 # grouping in Gemfile?
+
+
+
+
+# SB-3881: Validate Storage Account Functionality
+# https://gitlab.com/firstamerican/trust/data-analysis/ACHUU/-/merge_requests/133/diffs#5c6298ddfe71628785a48363ac8f069418c8da71
+# run this through rails console
+
+# create a Azure Storage object
+client = Azure::Storage::Blob::BlobService.create(
+    storage_account_name: Rails.configuration.azure_storage.storage_account_name,
+    storage_access_key: Rails.configuration.azure_storage.access_key
+)
+
+
+# create ACH File object using the Azure storage object
+files = UploadServices::UploadAchFiles.ach_files_from_storage(client)
+
+
+# read the contents of the file in the upload folder
+content = UploadServices::UploadAchFiles.read_blob(client, files[0])
+
+
+# set destination path for archiving
+file_path = “#{Rails.configuration.azure_storage.archive_directory}
+/#{Time.zone.now.strftime(‘%Y/%m’)}
+/#{UploadServices::Helpers.file_name_no_directory(files[0].name)}”
+
+
+# move the ACH file to archive folder
+UploadServices::ArchiveAchFiles.move_ach_to_archive(client, file_path, content)
+
+
+# delete file from upload folder
+UploadServices::ArchiveAchFiles.delete_original_ach_files(client, files[0].name)
+

@@ -7,6 +7,9 @@ docker build -t [tag name] [folder with Dockerfile]
 # remove stale docker images
 docker system prune -a
 
+# remove images that don't have tags
+docker rmi -f  $(docker images -f "dangling=true" -q --no-trunc)
+
 # run docker image
 #   - this will create a new container every time you run it
 #   - it will exit once 
@@ -16,6 +19,10 @@ docker run [image]
 docker run -it [image] bash
 # Run docker image as daemon (-d) and set port (-p)
 docker run -d -p [ext-port]:[int-port] [image]
+
+# set volume mount (-v)
+docker run -d -it -v "$(pwd)"/local_folder:/container_folder [docker-image]
+
 # for a remote image
 docker run -it --name [registry] [img]:[version] bash
 
@@ -34,6 +41,12 @@ docker-compose up
 
 # shell into container
 [winpty] docker exec -it [container tag name] bash
+
+docker stop [container]
+docker rm [container]
+
+# remove all docker processes
+docker rm $(docker ps -a -q)
 
 # pull docker image from ACR
 # https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli?tabs=azure-cli
