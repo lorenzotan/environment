@@ -1,0 +1,12 @@
+# ruby console
+https://guides.rubyonrails.org/getting_started.html#using-a-model-to-interact-with-the-database
+
+don't need '()' to call a function
+
+#{var_name} to deref a passed in parameter (in a method)
+
+@variable - used in a class. can be referenced by any method within that class (like 'self')
+
+# allows access to a variable within a class object
+# you can then get and set that variable 
+attr_accessor = :variable

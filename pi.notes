@@ -1,0 +1,22 @@
+# TO DO
+* can we set up wifi and install docker when installing image?
+* can we set up ssh keys at image level?
+* set up Git
+
+# need to set up ssh
+touch /boot/ssh
+add public key to authorized_keys
+chmod 700 .ssh
+chmod 600 authorized_keys
+
+# set up wifi
+sudo raspi-config
+
+# pull docker script
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+# install docker
+sh ./get-docker.sh
+
+# install git
+sudo apt install git
