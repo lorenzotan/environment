@@ -1,0 +1,11 @@
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P trust123
+
+https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-bash
+
+https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-ver15
+
+https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-docker-container-deployment?view=sql-server-ver15&pivots=cs1-bash
+
+# check tables
+https://chartio.com/resources/tutorials/sql-server-list-tables-how-to-show-all-tables/
+

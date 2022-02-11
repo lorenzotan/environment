@@ -1,0 +1,19 @@
+@fixtures
+
+# mark a test with a label
+@pytest.mark.[label]
+
+# run tests with only that label
+pytest -v -m [label]
+
+# or except the ones with the label
+pytest -v -m "not [label]"
+
+# only run tests with test_[name]
+pytest -k [test name]
+
+
+@mark.parametrize()
+
+# how to run pytest for specific test
+$ pytest -k [name of python module]

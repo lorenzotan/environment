@@ -100,6 +100,9 @@ git reset --mixed       # resets index but not working tree. changed files are p
 git reset --soft        # does not reset index or working tree. files marked for commit.
 
 
+
+git restore .           # restore all unstaged files
+
 +---------------------+
 | GIT Undo Merge Pull |
 +---------------------+

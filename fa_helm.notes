@@ -1,0 +1,37 @@
+# helm command to install torpedo helm chart
+helm upgrade --install torpedo helm-charts/torpedo --namespace staging-in-da-torpedo --create-namespace --set global.development=true --set global.keyVaultSecretsStore.enabled=false --set imagePullPolicy=IfNotPresent --set volumeDevSecretStore=/Users/ltan/code/fa/da/comp/composefiles/torpedo/volumeDevSecretStore --set initialRelease=true --set generateSeeds=true --set imageDev.tag=staging --set readOnlyFlag=false --debug --dry-run
+
+# helm command to install achuu helm chart
+helm upgrade --install achuu helm-charts/achuu \
+             --namespace staging-in-da-achuu \
+             --create-namespace \
+             --set global.development=true \
+             --set global.keyVaultSecretsStore.enabled=false \
+             --set imagePullPolicy=IfNotPresent \
+             --set volumeDevSecretStore=/Users/ltan/code/fa/da/comp/composefiles/achuu/volumeDevSecretStore \
+             --set readOnlyFlag=false \
+             --set sudoEnabled=false \
+             --set initialRelease=true \
+             --set devDependencies.enabled=true \
+             --debug
+
+helm upgrade --install achuu helm-charts/achuu --namespace staging-in-da-achuu --create-namespace --set global.development=true --set global.keyVaultSecretsStore.enabled=false --set imagePullPolicy=IfNotPresent --set volumeDevSecretStore=/Users/ltan/code/fa/da/comp/composefiles/achuu/volumeDevSecretStore --set initialRelease=true --set generateSeeds=true --set imageDev.tag=staging --set readOnlyFlag=false --debug --dry-run
+
+
+# helm command to install activemq helm chart
+helm upgrade --install activemq helm-charts/activemq --namespace staging-in-da-activemq --create-namespace --set global.development=true --set global.keyVaultSecretsStore.enabled=false --set imagePullPolicy=IfNotPresent --set generateSeeds=true --set imageDev.tag=staging --set readOnlyFlag=false --debug --dry-run
+
+
+# helm command to install postgres helm chart
+helm upgrade --install postgres helm-charts/postgres --namespace staging-in-da-postgres --create-namespace --debug --dry-run
+
+
+helm upgrade --install achuu ./helm-charts/achuu
+             --namespace staging-in-da-achuu
+             --create-namespace
+             --set global.development=true
+             --set global.keyVaultSecretsStore.enabled=false
+             --set imagePullPolicy=IfNotPresent
+             --set volumeDevSecretStore=/Users/ltan/code/fa/da/comp/composefiles/achuu/volumeDevSecretStore
+
+

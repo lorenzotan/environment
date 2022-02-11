@@ -1,0 +1,27 @@
+# Azure Logs Query
+
+// Memory:
+let threshold = 75000000;
+Perf
+| where InstanceName has 'achuu'
+| where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes"
+| summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 10m), InstanceName, _ResourceId
+| where AvgUsedRssMemoryBytes > threshold
+| render timechart
+
+// CPU:
+Perf
+| where InstanceName has 'achuu'
+| where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores"
+| summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 1m), InstanceName, _ResourceId
+| render timechart
+
+
+
+# Testing Azure Functions
+# in vscode
+F5 on __init__.py
+
+# Creating a local VM 
+# https://docs.microsoft.com/en-us/cli/azure/azure-cli-vm-tutorial?tutorial-step=3
+az login

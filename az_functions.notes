@@ -1,0 +1,17 @@
+# create new azure function locally 
+$ func init LocalFunctionProj --[python|dotnet]
+
+# run local server
+$ func host start
+
+
+# to create a new azure function from VS Code
+1. cmd + shift + p
+    azure login 
+2. create new function
+set function type
+set function permissions
+
+at this point you should be able to execute the new function from VS Code (F5)
+
+
