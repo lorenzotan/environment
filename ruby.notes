@@ -1,0 +1,8 @@
+# change/install versions of ruby
+$ rvm
+
+rvm install ruby-[version]
+
+rvm use ruby-[version]
+
+rvm --default use [version]

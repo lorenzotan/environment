@@ -2,6 +2,11 @@ bundle exec rake [task]
 
 # grouping in Gemfile?
 
+$ rails new [app]
+
+
+# start rails server
+$ bin/rails server
 
 
 
@@ -37,3 +42,31 @@ UploadServices::ArchiveAchFiles.move_ach_to_archive(client, file_path, content)
 # delete file from upload folder
 UploadServices::ArchiveAchFiles.delete_original_ach_files(client, files[0].name)
 
+
+# load up test data
+# if file is in db/seed.rb
+$ rake db:seed
+
+$ rails runner(r) [ruby script]
+
+
+# in wirecore use bundle exec
+$ bundle exec rail c
+$ bundle exec rail r [ruby script]
+
+
+
+# you can create a Gemfile to contain libraries that you want for your project
+# to install items in Gemfile
+$ bundle install # from Gemfile location
+
+
+
+# rails generateo to create rspec for class name
+rails g rspec:job [class name]
+
+$ rspec spec
+
+#within rails console
+# reloads console (useful if you need to start your session over)
+> reload!

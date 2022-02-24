@@ -1,0 +1,14 @@
+# https://raspberrypi.stackexchange.com/questions/105577/permission-denied-publickey
+# set up SSH
+touch ssh in /boot/ folder 
+enable PasswordAuthentication yes in /etc/ssh/sshd_config
+add public key to .ssh/authorized_keys
+
+
+# install docker
+https://docs.docker.com/engine/install/debian/
+https://phoenixnap.com/kb/docker-on-raspberry-pi
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+

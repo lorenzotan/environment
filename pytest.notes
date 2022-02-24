@@ -17,3 +17,8 @@ pytest -k [test name]
 
 # how to run pytest for specific test
 $ pytest -k [name of python module]
+
+-s  print all string output
+-v  print names of individual tests as they run
+-x  stop at first error
+-k  run tests matching following keyword

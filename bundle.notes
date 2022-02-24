@@ -1,0 +1,10 @@
+$ bundle install
+
+$ bundle update
+
+# list gems that have newer versions
+$ bundle outdated {--filter-minor}
+
+
+# https://www.bigbinary.com/learn-rubyonrails-book/bundler-audit
+$ bundle exec bundle audit check --update

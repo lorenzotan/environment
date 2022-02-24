@@ -1,3 +1,5 @@
+# https://ostechnix.com/tmux-command-examples-to-manage-multiple-terminal-sessions/
+
 # PANES
 ctrl+b %    # new pane vertical split
 ctrl+b "    # new pane hotizontal split
@@ -14,7 +16,15 @@ ctrl+b 0    # move to window 0
 
 
 # SESSIONS
+# create new
+tmux new -s [name tmux session]
+
+# delete tmux session
+tmux kill-session -t [name]
+
 ctrl+b d    # detach session
+tmux attach -t [tmux session name]
+
 
 # list tmux sessions
 tmux ls
@@ -24,3 +34,5 @@ tmux attach -t [session_id]
 
 
 # tmux new -s [session_name]
+
+

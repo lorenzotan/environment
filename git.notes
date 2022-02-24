@@ -4,6 +4,12 @@
 +----------+
 | GIT INIT |
 +----------+
+# set global .gitignore 
+git config --globa core.excludesfile ~/.gitignore
+
++----------+
+| GIT INIT |
++----------+
 
 # local filebased share SERVERSIDE / NETWORK SHARE
 $GIT_DIR/ $ git init --bare --shared [project].git

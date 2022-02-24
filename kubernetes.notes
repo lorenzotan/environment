@@ -54,3 +54,16 @@ kubectl delete pod [pod name]
 # check ports
 k get svc
 k delete svc [name]
+
+
+
+# PROD
+k get pods -n [namespace]
+k exec -it [pod] -n [namespace] bash
+
+
+# look at logs
+k logs [pod] -n [namespace]
+
+# 
+k describe pod [pod] -n [namespace]

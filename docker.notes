@@ -54,6 +54,11 @@ az login
 az acr login --name [registry] (ie. trstaps1trcmcr1)
 docker pull [image name] (ie. trstaps1trcmcr1.azurecr.io/firstam/data-analysis/ubuntu-ruby:2.5)
 
+
+# rename docker image
+docker image tag [current image name and tag] [new image name and tag]
+docker image tag trstans1trcmcr1.azurecr.io/firstam/client-facing-web-applications/ibanking:latest firstam/ibanking:latest
+
 docker logs [container_id]
 
 +-------------------------------------------------------------------------------

@@ -25,3 +25,22 @@ F5 on __init__.py
 # Creating a local VM 
 # https://docs.microsoft.com/en-us/cli/azure/azure-cli-vm-tutorial?tutorial-step=3
 az login
+
+
+
+# AZCOPY 
+
+azcopy login --tenant-id [get from azure active directory->Properties]
+
+
+az login
+az acr login --name
+
+
+# https://docs.microsoft.com/en-us/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list
+az keyvault list/show
+
+
+
+We have to manually add secrets into key vault.
+* example of secrets can be az function app settings (ie. IOLTAReportContainerName => iolta-report)
