@@ -39,9 +39,6 @@ docker ps --all
 # cd to docker-compose.yml file
 docker-compose up
 
-# shell into container
-[winpty] docker exec -it [container tag name] bash
-
 docker stop [container]
 docker rm [container]
 
