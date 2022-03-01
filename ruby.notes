@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # change/install versions of ruby
 $ rvm
 
@@ -7,7 +6,6 @@ rvm install ruby-[version]
 rvm use ruby-[version]
 
 rvm --default use [version]
-=======
 # ruby console
 https://guides.rubyonrails.org/getting_started.html#using-a-model-to-interact-with-the-database
 
@@ -20,4 +18,8 @@ don't need '()' to call a function
 # allows access to a variable within a class object
 # you can then get and set that variable 
 attr_accessor = :variable
->>>>>>> c1790b11729857d56108e216e5e574308573f23f
+
+
+# DEBUGGING
+require 'pry'
+binding.pry

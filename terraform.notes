@@ -1,0 +1,5 @@
+data.tf
+- stores data variables 
+
+function-app.tf
+- will reference the data variables in data.tf and assign it to the correct key in azure

@@ -7,4 +7,5 @@ $ bundle outdated {--filter-minor}
 
 
 # https://www.bigbinary.com/learn-rubyonrails-book/bundler-audit
+# https://www.youtube.com/watch?v=2Lm_pZV-BLQ
 $ bundle exec bundle audit check --update
